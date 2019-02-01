@@ -12,10 +12,10 @@ import static org.testng.Assert.assertTrue;
 
 // TODO Class/test should be named with relation to it purpose
 // TODO SoftAsserts ?
-public class Hw1Test {
+public class HomePageTest {
 
     @Test
-    public void hw1Test() {
+    public void homePageTest() {
         //1 Open test site by URL
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -78,7 +78,8 @@ public class Hw1Test {
         assertTrue(driver.findElement(By.cssSelector(".main-title")).isDisplayed());
         assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");
         assertTrue(driver.findElement(By.cssSelector(".main-txt")).isDisplayed());
-        assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), "LOREM IPSUM DOLOR SIT AMET," +
+        assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(),
+                "LOREM IPSUM DOLOR SIT AMET," +
                 " CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
                 "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO " +
                 "CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU " +
