@@ -10,6 +10,8 @@ import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO Class/test should be named with relation to it purpose
+// TODO SoftAsserts ?
 public class Hw1Test {
 
     @Test
