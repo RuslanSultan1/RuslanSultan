@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNg Suite with annotations" parallel="methods" thread-count="3">
+
+    <test name="TestWithAnnotations">
+        <classes>
+            <class name="hw2.ex3.TestWithAnnotations"/>
+        </classes>
+    </test>
+
+</suite>

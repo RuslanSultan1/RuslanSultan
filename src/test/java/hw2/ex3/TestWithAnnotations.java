@@ -1,23 +1,41 @@
-package hw1;
+package hw2.ex3;
 
+import hw2.SeleniumBase2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class HomePageTest {
+public class TestWithAnnotations extends SeleniumBase2 {
+    private WebDriver driver;
+
+    @BeforeClass
+    public void beforeClass() {
+        driver = new ChromeDriver();
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+        driver.manage().window().maximize();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println(driver.getTitle());
+    }
+
+    @AfterClass
+    public void afterClass() {
+        driver.close();
+    }
 
     @Test
-    public void homePageTest() {
+    public void testWithAnnotations() {
         //1 Open test site by URL
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
         //2 Assert Browser title
@@ -106,8 +124,5 @@ public class HomePageTest {
 
         //16 Assert that there is Footer
         assertTrue(driver.findElement(By.cssSelector("footer")).isDisplayed());
-
-        //17 Close Browser
-        driver.close();
     }
 }
