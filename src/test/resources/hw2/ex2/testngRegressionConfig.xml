@@ -9,7 +9,7 @@
             </run>
         </groups>
         <packages>
-            <package name="hw2.ex2"/>
+            <package name="base.hw2.ex2"/>
         </packages>
     </test>
 

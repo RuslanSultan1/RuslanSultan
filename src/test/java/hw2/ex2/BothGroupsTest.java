@@ -1,6 +1,5 @@
 package hw2.ex2;
 
-import hw2.SeleniumBase1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

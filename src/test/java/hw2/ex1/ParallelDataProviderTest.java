@@ -1,6 +1,6 @@
 package hw2.ex1;
 
-import hw2.SeleniumBase1;
+import base.SeleniumBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class ParallelDataProviderTest extends SeleniumBase1 {
+public class ParallelDataProviderTest extends SeleniumBase {
     @DataProvider(parallel = true)
     private Object[][] simpleDataProvider() {
         return new Object[][]{

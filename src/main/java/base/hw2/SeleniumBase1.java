@@ -1,11 +1,11 @@
-package hw2;
+package base.hw2;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import static java.lang.System.setProperty;
 
-public abstract class SeleniumBase2 {
+public abstract class SeleniumBase1 {
     @BeforeSuite
     public void beforeSuite() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");

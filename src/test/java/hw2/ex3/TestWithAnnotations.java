@@ -1,6 +1,6 @@
 package hw2.ex3;
 
-import hw2.SeleniumBase2;
+import base.hw2.SeleniumBase1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class TestWithAnnotations extends SeleniumBase2 {
+public class TestWithAnnotations extends SeleniumBase1 {
     private WebDriver driver;
 
     @BeforeClass
