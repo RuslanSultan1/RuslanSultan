@@ -104,6 +104,8 @@ public class IndexPage {
 
     public void checkHeaderSection(HeaderSection home, HeaderSection contact, HeaderSection service,
                                    HeaderSection metalsAndColors) {
+        // TODO This will be better with for loop,
+        // TODO you can create locator that provide you with the list of elements
         assertTrue(headerIndex.isDisplayed());
         assertEquals(headerIndex.getText(), home.toString());
         assertTrue(headerContacts.isDisplayed());
@@ -123,6 +125,7 @@ public class IndexPage {
 
     public void checkIconTexts(IconsTexts benefitPractise, IconsTexts benefitCustom, IconsTexts benefitMulti,
                                IconsTexts benefitBase) {
+        // TODO This will be better with for loop
         assertTrue(textPractise.isDisplayed());
         assertEquals(textPractise.getText(), benefitPractise.toString());
         assertTrue(textCustom.isDisplayed());
