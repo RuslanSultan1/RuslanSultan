@@ -5,11 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 import static enums.LoginInfo.INDEX_PAGE_URL;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class IndexPage {
+    private WebDriver driver;
+
+    public IndexPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
     @FindBy(css = "[id='user-icon']")
     private WebElement loginIcon;
 
@@ -25,17 +33,8 @@ public class IndexPage {
     @FindBy(css = "[id='user-name']")
     private WebElement userIcon;
 
-    @FindBy(css = ".uui-header [href='index.html']")
-    private WebElement headerIndex;
-
-    @FindBy(css = ".uui-header [href='contacts.html']")
-    private WebElement headerContacts;
-
-    @FindBy(css = ".uui-header [data-toggle='dropdown']")
-    private WebElement headerService;
-
-    @FindBy(css = ".uui-header [href='metals-colors.html']")
-    private WebElement headerMetalsAndColors;
+    @FindBy(css = "nav>.uui-navigation.nav>li")
+    private List<WebElement> headers;
 
     @FindBy(css = ".icon-practise")
     private WebElement iconPractise;
@@ -49,17 +48,8 @@ public class IndexPage {
     @FindBy(css = ".icon-base")
     private WebElement iconBase;
 
-    @FindBy(css = ".benefits .col-sm-3:nth-of-type(1)")
-    private WebElement textPractise;
-
-    @FindBy(css = ".benefits .col-sm-3:nth-of-type(2)")
-    private WebElement textCustom;
-
-    @FindBy(css = ".benefits .col-sm-3:nth-of-type(3)")
-    private WebElement textMulti;
-
-    @FindBy(css = ".benefits .col-sm-3:nth-of-type(4)")
-    private WebElement textBase;
+    @FindBy(css = ".benefits .col-sm-3")
+    private List<WebElement> benefitsTexts;
 
     @FindBy(css = ".main-title")
     private WebElement mainTitle;
@@ -76,15 +66,15 @@ public class IndexPage {
     @FindBy(css = ".text-center a")
     private WebElement subheader;
 
-    public void open(WebDriver driver) {
-        driver.get(INDEX_PAGE_URL.toString());
-    }
-
     @FindBy(css = ".uui-side-bar")
     private WebElement sideBar;
 
     @FindBy(css = "footer")
     private WebElement footer;
+
+    public void open() {
+        driver.get(INDEX_PAGE_URL.toString());
+    }
 
     public void login(LoginInfo name, LoginInfo password) {
         loginIcon.click();
@@ -98,22 +88,17 @@ public class IndexPage {
         assertEquals(userIcon.getText(), userName.toString());
     }
 
-    public void checkTitle(WebDriver driver, LoginInfo homePageTitle) {
+    public void checkTitle(LoginInfo homePageTitle) {
         assertEquals(driver.getTitle(), homePageTitle.toString());
     }
 
-    public void checkHeaderSection(HeaderSection home, HeaderSection contact, HeaderSection service,
-                                   HeaderSection metalsAndColors) {
+    public void checkHeaderSection(HeaderSection[] values) {
         // TODO This will be better with for loop,
         // TODO you can create locator that provide you with the list of elements
-        assertTrue(headerIndex.isDisplayed());
-        assertEquals(headerIndex.getText(), home.toString());
-        assertTrue(headerContacts.isDisplayed());
-        assertEquals(headerContacts.getText(), contact.toString());
-        assertTrue(headerService.isDisplayed());
-        assertEquals(headerService.getText(), service.toString());
-        assertTrue(headerMetalsAndColors.isDisplayed());
-        assertEquals(headerMetalsAndColors.getText(), metalsAndColors.toString());
+        for (int i = 0; i < values.length; i++) {
+            assertTrue(headers.get(i).isDisplayed());
+            assertEquals(headers.get(i).getText(), values[i].toString());
+        }
     }
 
     public void checkIcons() {
@@ -123,17 +108,12 @@ public class IndexPage {
         assertTrue(iconBase.isDisplayed());
     }
 
-    public void checkIconTexts(IconsTexts benefitPractise, IconsTexts benefitCustom, IconsTexts benefitMulti,
-                               IconsTexts benefitBase) {
+    public void checkIconTexts(IconsTexts[] benefits) {
         // TODO This will be better with for loop
-        assertTrue(textPractise.isDisplayed());
-        assertEquals(textPractise.getText(), benefitPractise.toString());
-        assertTrue(textCustom.isDisplayed());
-        assertEquals(textCustom.getText(), benefitCustom.toString());
-        assertTrue(textMulti.isDisplayed());
-        assertEquals(textMulti.getText(), benefitMulti.toString());
-        assertTrue(textBase.isDisplayed());
-        assertEquals(textBase.getText(), benefitBase.toString());
+        for (int i = 0; i < benefits.length; i++) {
+            assertTrue(benefitsTexts.get(i).isDisplayed());
+            assertEquals(benefitsTexts.get(i).getText(), benefits[i].toString());
+        }
     }
 
     public void checkMainHeaders(MainHeaders title, MainHeaders txt) {
@@ -143,7 +123,7 @@ public class IndexPage {
         assertEquals(mainTxt.getText(), txt.toString());
     }
 
-    public void checkIframe(WebDriver driver) {
+    public void checkIframe() {
         assertTrue(iframe.isDisplayed());
         driver.switchTo().frame(iframe);
         assertTrue(epamLogo.isDisplayed());
