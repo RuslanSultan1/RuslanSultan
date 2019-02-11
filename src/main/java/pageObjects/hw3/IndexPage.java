@@ -1,4 +1,4 @@
-package base.hw3;
+package pageObjects.hw3;
 
 import enums.*;
 import org.openqa.selenium.WebDriver;
@@ -93,8 +93,6 @@ public class IndexPage {
     }
 
     public void checkHeaderSection(HeaderSection[] values) {
-        // TODO This will be better with for loop,
-        // TODO you can create locator that provide you with the list of elements
         for (int i = 0; i < values.length; i++) {
             assertTrue(headers.get(i).isDisplayed());
             assertEquals(headers.get(i).getText(), values[i].toString());
@@ -109,7 +107,6 @@ public class IndexPage {
     }
 
     public void checkIconTexts(IconsTexts[] benefits) {
-        // TODO This will be better with for loop
         for (int i = 0; i < benefits.length; i++) {
             assertTrue(benefitsTexts.get(i).isDisplayed());
             assertEquals(benefitsTexts.get(i).getText(), benefits[i].toString());

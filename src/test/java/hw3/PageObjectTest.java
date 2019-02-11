@@ -1,7 +1,7 @@
 package hw3;
 
 import base.SeleniumBase;
-import base.hw3.IndexPage;
+import pageObjects.hw3.IndexPage;
 import enums.HeaderSection;
 import enums.IconsTexts;
 import org.openqa.selenium.WebDriver;
