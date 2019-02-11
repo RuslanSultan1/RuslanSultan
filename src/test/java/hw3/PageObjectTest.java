@@ -34,7 +34,6 @@ public class PageObjectTest extends SeleniumBase {
     @Test
     public void pageObjectTest() {
         //1 Open test site by URL
-        // TODO Take a look on IdexPage(WebDriver driver) {...} constructor
         indexPage.open();
 
         //2 Assert Browser title
@@ -56,7 +55,6 @@ public class PageObjectTest extends SeleniumBase {
         indexPage.checkIcons();
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
-        // TODO You can pass che whole enum into this method at once, take a look on enum default methods
         indexPage.checkIconTexts(IconsTexts.values());
 
         //9 Assert a text of the main headers
