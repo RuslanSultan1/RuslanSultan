@@ -1,13 +1,13 @@
 package enums;
 
-public enum DropdownOptions {
+public enum DropdownColorOptions {
     RED("Red"),
     GREEN("Green"),
     BLUE("Blue"),
     YELLOW("Yellow");
     String value;
 
-    DropdownOptions(String value) {
+    DropdownColorOptions(String value) {
         this.value = value;
     }
 

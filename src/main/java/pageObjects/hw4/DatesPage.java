@@ -19,32 +19,33 @@ public class DatesPage {
     @FindBy(css = ".ui-slider")
     private SelenideElement sliderRange;
 
-    @FindBy(css = ".panel-body-list.logs>li")
+    @FindBy(css = ".logs li")
     private List<SelenideElement> logs;
 
-    private int leftSliderCurrentPos = 20;
-    private int rightSliderCurrentPos = 100;
+    private Integer leftSliderCurrentPos = 20;
+    private Integer rightSliderCurrentPos = 100;
 
-    private void setAndCheckSlider(SelenideElement slider, int currentPos, int destination) {
-        Actions actions = new Actions(getWebDriver());
-        int step;
-        boolean flag=false;
-        if (currentPos <= destination) {
-            step = sliderRange.getSize().width / 100;
-        } else {
-            step = -sliderRange.getSize().width / 50;
-        }
-        while (Integer.valueOf(slider.getText()) != destination) {
-            actions.dragAndDropBy(slider, step, 0).perform();
-            flag=true;
-        }
-        currentPos = destination;
-        if (flag) logs.get(0).shouldHave(text(String.valueOf(destination)));
+    private void setAndCheckSlider(int destination, SelenideElement slider, Integer currentPos) {
+        float step = (float) (sliderRange.getSize().width / 100.0);
+        int delta = (int) ((destination - currentPos) * step - 2);
+        new Actions(getWebDriver()).dragAndDropBy(slider, delta, 0).perform();
+        if (slider.equals(leftSlider)) leftSliderCurrentPos = destination;
+        else rightSliderCurrentPos = destination;
+        slider.shouldHave(text(String.valueOf(destination)));
     }
+
+    // It's needed, when sliders get into one position. It changes order of calling setAndCheckSlider method
+    // for left and right sliders.
+    boolean switcher = true;
 
     public void setAndCheckSliders(int from, int to) {
-        setAndCheckSlider(leftSlider, leftSliderCurrentPos, from);
-        setAndCheckSlider(rightSlider, rightSliderCurrentPos, to);
+        if (switcher) {
+            setAndCheckSlider(from, leftSlider, leftSliderCurrentPos);
+            setAndCheckSlider(to, rightSlider, rightSliderCurrentPos);
+        } else {
+            setAndCheckSlider(to, rightSlider, rightSliderCurrentPos);
+            setAndCheckSlider(from, leftSlider, leftSliderCurrentPos);
+        }
+        if (from == to) switcher = !switcher;
     }
-
 }

@@ -1,26 +1,25 @@
 package pageObjects.hw4;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.*;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 
 public class ServicePage {
 
     @FindBy(css = ".label-checkbox")
-    private List<SelenideElement> checkboxes;
+    private ElementsCollection checkboxes;
 
     @FindBy(css = ".label-radio")
-    private List<SelenideElement> radios;
+    private ElementsCollection radios;
 
     @FindBy(css = "select")
     private SelenideElement dropdown;
 
     @FindBy(css = "select option")
-    private List<SelenideElement> dropdownOptions;
+    private ElementsCollection dropdownOptions;
 
     @FindBy(css = "[name='Default Button']")
     private SelenideElement defaultButton;
@@ -34,8 +33,8 @@ public class ServicePage {
     @FindBy(css = "[name='navigation-sidebar']")
     private SelenideElement leftSection;
 
-    @FindBy(css = ".panel-body-list.logs>li")
-    private List<SelenideElement> logs;
+    @FindBy(css = ".logs li")
+    private ElementsCollection logs;
 
     public void checkDiffElPageInterface() {
         for (SelenideElement checkbox : checkboxes) {
@@ -57,35 +56,31 @@ public class ServicePage {
         leftSection.shouldBe(visible);
     }
 
-    public void selectCheckbox(Checkboxes checkbox) {
-        checkboxes.get(checkbox.ordinal()).click();
-        System.out.println(checkboxes.get(checkbox.ordinal()).isSelected());
+    public void clickNatureElCheckbox(NatureElementsCheckboxes... values) {
+        for (NatureElementsCheckboxes value : values) {
+            checkboxes.find(text(value.toString())).click();
+        }
     }
 
-    public void unselectCheckbox(Checkboxes checkbox) {
-        checkboxes.get(checkbox.ordinal()).click();
+    public void checkNatureElCheckboxStatus(NatureElementsCheckboxes checkbox, Boolean status) {
+        logs.find(text(checkbox.toString())).shouldHave(text(status.toString()));
     }
 
-    public void checkCheckboxStatus(Checkboxes checkbox, Boolean status) {
-        logs.get(0).shouldHave(text(checkbox.toString()));
-        logs.get(0).shouldHave(text(status.toString()));
+    public void selectColorRadio(ColorRadios radio) {
+        radios.find(text(radio.toString())).click();
     }
 
-    public void selectRadio(Radios radio) {
-        radios.get(radio.ordinal()).click();
+    public void checkColorRadioStatus(ColorRadios radio) {
+        logs.find(text(radio.toString())).shouldBe(visible);
     }
 
-    public void checkRadioStatus(Radios radio) {
-        logs.get(0).shouldHave(text(radio.toString()));
-    }
-
-    public void selectDropdown(DropdownOptions dropdownOption) {
+    public void selectDropdownColor(DropdownColorOptions dropdownOption) {
         dropdown.click();
-        dropdownOptions.get(dropdownOption.ordinal()).click();
+        dropdownOptions.find(text(dropdownOption.toString())).click();
     }
 
-    public void checkDropdownStatus(DropdownOptions dropdownOption) {
-        logs.get(0).shouldHave(text(dropdownOption.toString()));
+    public void checkDropdownColorStatus(DropdownColorOptions dropdownOption) {
+        logs.find(text(dropdownOption.toString())).shouldBe(visible);
     }
 
 

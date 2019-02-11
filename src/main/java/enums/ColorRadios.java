@@ -1,6 +1,6 @@
 package enums;
 
-public enum Radios {
+public enum ColorRadios {
     GOLD("Gold"),
     SILVER("Silver"),
     BRONZE("Bronze"),
@@ -8,7 +8,7 @@ public enum Radios {
     String value;
     int position;
 
-    Radios(String value) {
+    ColorRadios(String value) {
         this.value = value;
     }
 

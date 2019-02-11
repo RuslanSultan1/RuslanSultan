@@ -1,13 +1,13 @@
 package enums;
 
-public enum Checkboxes {
+public enum NatureElementsCheckboxes {
     WATER("Water"),
     EARTH("Earth"),
     WIND("Wind"),
     FIRE("Fire");
     String value;
 
-    Checkboxes(String value) {
+    NatureElementsCheckboxes(String value) {
         this.value = value;
     }
 

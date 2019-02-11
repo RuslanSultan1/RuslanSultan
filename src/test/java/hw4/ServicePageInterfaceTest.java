@@ -11,11 +11,12 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static enums.Checkboxes.WATER;
-import static enums.Checkboxes.WIND;
-import static enums.DropdownOptions.YELLOW;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static enums.NatureElementsCheckboxes.WATER;
+import static enums.NatureElementsCheckboxes.WIND;
+import static enums.DropdownColorOptions.YELLOW;
 import static enums.LoginInfo.*;
-import static enums.Radios.SELEN;
+import static enums.ColorRadios.SELEN;
 
 public class ServicePageInterfaceTest extends SelenideBase {
     private IndexPage indexPage;
@@ -24,7 +25,8 @@ public class ServicePageInterfaceTest extends SelenideBase {
     @BeforeMethod
     public void initTest() {
         //1 Open test site by URL
-        open("https://epam.github.io/JDI/index.html");
+        open(INDEX_PAGE_URL.toString());
+        getWebDriver().manage().window().maximize();
         indexPage=page(IndexPage.class);
         servicePage = page(ServicePage.class);
     }
@@ -66,30 +68,28 @@ public class ServicePageInterfaceTest extends SelenideBase {
         //11 Select checkboxes
         //12 Assert that for each checkbox there is an individual log row and value is corresponded
         // to the status of checkbox.
-        servicePage.selectCheckbox(WATER);
-        servicePage.checkCheckboxStatus(WATER,true);
-        servicePage.selectCheckbox(WIND);
-        servicePage.checkCheckboxStatus(WIND,true);
+        servicePage.clickNatureElCheckbox(WATER,WIND);
+        servicePage.checkNatureElCheckboxStatus(WATER,true);
+        servicePage.checkNatureElCheckboxStatus(WIND,true);
 
         //13 Select radio
-        servicePage.selectRadio(SELEN);
+        servicePage.selectColorRadio(SELEN);
 
         //14 Assert that for radiobutton there is a log row and value is corresponded
         // to the status of radiobutton.
-        servicePage.checkRadioStatus(SELEN);
+        servicePage.checkColorRadioStatus(SELEN);
 
         //15 Select in dropdown
-        servicePage.selectDropdown(YELLOW);
+        servicePage.selectDropdownColor(YELLOW);
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the selected value.
-        servicePage.checkDropdownStatus(YELLOW);
+        servicePage.checkDropdownColorStatus(YELLOW);
 
         //17 Unselect and assert checkboxes
         //18 Assert that for each checkbox there is an individual log row and value
         // is corresponded to the status of checkbox.
-        servicePage.unselectCheckbox(WATER);
-        servicePage.checkCheckboxStatus(WATER,false);
-        servicePage.unselectCheckbox(WIND);
-        servicePage.checkCheckboxStatus(WIND,false);
+        servicePage.clickNatureElCheckbox(WATER,WIND);
+        servicePage.checkNatureElCheckboxStatus(WATER,false);
+        servicePage.checkNatureElCheckboxStatus(WIND,false);
     }
 }

@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.LoginInfo.*;
 
 public class DatesPageSlidersTest extends SelenideBase {
@@ -19,14 +20,15 @@ public class DatesPageSlidersTest extends SelenideBase {
     @BeforeMethod
     public void initTest() {
         //1 Open test site by URL
-        open("https://epam.github.io/JDI/index.html");
+        open(INDEX_PAGE_URL.toString());
+        getWebDriver().manage().window().maximize();
         indexPage = page(IndexPage.class);
         datesPage = page(DatesPage.class);
     }
 
     @AfterMethod
     public void closeTest() {
-         close();
+        close();
     }
 
     @Test
@@ -51,12 +53,12 @@ public class DatesPageSlidersTest extends SelenideBase {
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right
         // slider - the most left position.
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-//        datesPage.setAndCheckSliders(0,0);
+        datesPage.setAndCheckSliders(0, 0);
 
         //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position,
         // right slider - the most rigth position.
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-//        datesPage.setAndCheckSliders(100, 100);
+        datesPage.setAndCheckSliders(100, 100);
 
         //12 Using drag-and-drop set Range sliders.
         //13 Assert that for "From" and "To" sliders there are logs rows with corresponding values

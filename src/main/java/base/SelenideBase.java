@@ -10,6 +10,6 @@ public abstract class SelenideBase {
     @BeforeSuite
     public void beforeSuite() {
         Configuration.browser = CHROME;
-        Configuration.startMaximized = true;
+        //Configuration.startMaximized = true;
     }
 }
