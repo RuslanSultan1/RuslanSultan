@@ -27,7 +27,7 @@ public class ServicePageInterfaceTest extends SelenideBase {
         //1 Open test site by URL
         open(INDEX_PAGE_URL.toString());
         getWebDriver().manage().window().maximize();
-        indexPage=page(IndexPage.class);
+        indexPage = page(IndexPage.class);
         servicePage = page(ServicePage.class);
     }
 
@@ -68,9 +68,9 @@ public class ServicePageInterfaceTest extends SelenideBase {
         //11 Select checkboxes
         //12 Assert that for each checkbox there is an individual log row and value is corresponded
         // to the status of checkbox.
-        servicePage.clickNatureElCheckbox(WATER,WIND);
-        servicePage.checkNatureElCheckboxStatus(WATER,true);
-        servicePage.checkNatureElCheckboxStatus(WIND,true);
+        servicePage.clickNatureElCheckbox(WATER, WIND);
+        servicePage.checkNatureElCheckboxStatus(WATER, true);
+        servicePage.checkNatureElCheckboxStatus(WIND, true);
 
         //13 Select radio
         servicePage.selectColorRadio(SELEN);
@@ -88,8 +88,8 @@ public class ServicePageInterfaceTest extends SelenideBase {
         //17 Unselect and assert checkboxes
         //18 Assert that for each checkbox there is an individual log row and value
         // is corresponded to the status of checkbox.
-        servicePage.clickNatureElCheckbox(WATER,WIND);
-        servicePage.checkNatureElCheckboxStatus(WATER,false);
-        servicePage.checkNatureElCheckboxStatus(WIND,false);
+        servicePage.clickNatureElCheckbox(WATER, WIND);
+        servicePage.checkNatureElCheckboxStatus(WATER, false);
+        servicePage.checkNatureElCheckboxStatus(WIND, false);
     }
 }
