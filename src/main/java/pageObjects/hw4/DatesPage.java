@@ -1,6 +1,7 @@
 package pageObjects.hw4;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -38,6 +39,7 @@ public class DatesPage {
     // for left and right sliders.
     boolean switcher = true;
 
+    @Step("Setting sliders range from {from} to {to} and checking them.")
     public void setAndCheckSliders(int from, int to) {
         if (switcher) {
             setAndCheckSlider(from, leftSlider, leftSliderCurrentPos);

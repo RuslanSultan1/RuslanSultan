@@ -2,8 +2,12 @@ package hw5;
 
 import base.SelenideBase;
 import enums.ServiceMenu;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.hw4.IndexPage;
 import pageObjects.hw4.ServicePage;
@@ -16,6 +20,10 @@ import static enums.LoginInfo.*;
 import static enums.NatureElementsCheckboxes.WATER;
 import static enums.NatureElementsCheckboxes.WIND;
 
+
+@Feature("Smoke tests")
+@Story("Test that will fail")
+@Listeners(AllureAttachmentListener.class)
 public class BrokenTest extends SelenideBase {
     private IndexPage indexPage;
     private ServicePage servicePage;
@@ -67,7 +75,7 @@ public class BrokenTest extends SelenideBase {
         //12 Assert that for each checkbox there is an individual log row and value is corresponded
         // to the status of checkbox.
         servicePage.clickNatureElCheckbox(WATER, WIND);
-        servicePage.checkNatureElCheckboxStatus(WATER, true);
+        servicePage.checkNatureElCheckboxStatus(WATER, false);
         servicePage.checkNatureElCheckboxStatus(WIND, true);
 
         //13 Select radio

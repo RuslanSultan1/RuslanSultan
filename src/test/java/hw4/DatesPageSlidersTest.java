@@ -1,7 +1,11 @@
 package hw4;
 
 import base.SelenideBase;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.hw4.DatesPage;
 import pageObjects.hw4.IndexPage;
@@ -13,6 +17,9 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.LoginInfo.*;
 
+@Feature("Smoke tests")
+@Story("Testing sliders on the Dates page.")
+@Listeners(AllureAttachmentListener.class)
 public class DatesPageSlidersTest extends SelenideBase {
     private IndexPage indexPage;
     private DatesPage datesPage;

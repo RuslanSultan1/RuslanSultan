@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.LoginInfo;
 import enums.ServiceMenu;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -42,6 +43,7 @@ public class IndexPage {
     @FindBy(css = ".menu-title[index='3'] li")
     private ElementsCollection LeftServiceMenu;
 
+    @Step("Trying logging in using name: {name} with password: {password}.")
     public void login(LoginInfo name, LoginInfo password) {
         loginIcon.click();
         userField.sendKeys(name.toString());
@@ -49,15 +51,18 @@ public class IndexPage {
         submitButton.click();
     }
 
+    @Step("Checking title of the Index page, which should be equal to {indexPageTitle}.")
     public void checkTitle(LoginInfo indexPageTitle) {
         assertEquals(title(), indexPageTitle.toString());
     }
 
+    @Step("Checking user name in the top-right side of screen that user {userName} is loggined.")
     public void checkUser(LoginInfo userName) {
         userIcon.shouldBe(visible);
         userIcon.shouldHave(text(userName.toString()));
     }
 
+    @Step("Clicking on \"Service\" subcategory in the header and checking that drop down contains options: {values}.")
     public void checkHeaderServiceMenu(ServiceMenu[] values) {
         HeaderServiceButton.click();
         for (ServiceMenu value : values) {
@@ -65,6 +70,7 @@ public class IndexPage {
         }
     }
 
+    @Step("Clicking on \"Service\" subcategory in the left section and checking that drop down contains options {values}.")
     public void checkLeftServiceMenu(ServiceMenu[] values) {
         LeftServiceButton.click();
         for (ServiceMenu value : values) {
@@ -72,11 +78,13 @@ public class IndexPage {
         }
     }
 
+    @Step("Opening through the header menu Service -> Different Elements Page")
     public void openDiffElPage() {
         HeaderServiceButton.click();
         HeaderServiceMenu.find(text(DIFFERENT_ELEMENTS.toString())).click();
     }
 
+    @Step("Opening through the header menu Service -> Dates Page")
     public void openDatesPage() {
         HeaderServiceButton.click();
         HeaderServiceMenu.find(text(DATES.toString())).click();

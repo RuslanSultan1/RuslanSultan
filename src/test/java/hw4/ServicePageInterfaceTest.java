@@ -1,6 +1,10 @@
 package hw4;
 
 import base.SelenideBase;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
+import org.testng.annotations.Listeners;
 import pageObjects.hw4.IndexPage;
 import pageObjects.hw4.ServicePage;
 import enums.ServiceMenu;
@@ -18,6 +22,9 @@ import static enums.DropdownColorOptions.YELLOW;
 import static enums.LoginInfo.*;
 import static enums.ColorRadios.SELEN;
 
+@Feature("Smoke tests")
+@Story("Testing Service page interface.")
+@Listeners(AllureAttachmentListener.class)
 public class ServicePageInterfaceTest extends SelenideBase {
     private IndexPage indexPage;
     private ServicePage servicePage;
