@@ -34,13 +34,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!--<java.version>8</java.version>-->
-        <!--<maven.compiler.source>${java.version}</maven.compiler.source>-->
-        <!--<maven.compiler.target>${java.version}</maven.compiler.target>-->
+        <java.version>8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -49,7 +51,7 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src\test\resources\testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src\test\resources\hw5\testNg.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
