@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="FeaturesSuite">
+
+    <test name="Features Test">
+        <classes>
+            <class name="hw6.RunBothFeatures"/>
+        </classes>
+    </test>
+
+</suite>

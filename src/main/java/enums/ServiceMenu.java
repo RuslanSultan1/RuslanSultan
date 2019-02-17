@@ -6,7 +6,9 @@ public enum ServiceMenu {
     COMPLEX_TABLE("Complex Table"),
     SIMPLE_TABLE("Simple Table"),
     TABLES_WITH_PAGES("Table With Pages"),
-    DIFFERENT_ELEMENTS("Different Elements");
+    DIFFERENT_ELEMENTS("Different Elements"),
+    PERFORMANCE("Performance"),
+    USER_TABLE("User table");
     String value;
 
     ServiceMenu(String value) {

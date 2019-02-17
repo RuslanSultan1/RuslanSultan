@@ -44,6 +44,13 @@
         </dependency>
 
         <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>1.2.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.0-BETA14</version>
@@ -87,7 +94,9 @@
     </dependencies>
 
     <build>
+
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -123,8 +132,11 @@
 
                 </dependencies>
             </plugin>
+
         </plugins>
+
     </build>
+    
     <reporting>
         <excludeDefaults>true</excludeDefaults>
         <plugins>
