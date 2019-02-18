@@ -4,6 +4,8 @@ import pageObjects.hw6.Hw6IndexPage;
 import pageObjects.hw6.Hw6ServicePage;
 import cucumber.api.java.en.When;
 
+// TODO Code convention !
+// TODO It is not make sense to create new PO in each step.
 public class ActionSteps {
 
     @When("^I login to 'Home Page' as user '([^\"]*)' with password '([^\"]*)'$")
@@ -26,6 +28,7 @@ public class ActionSteps {
         new Hw6IndexPage().openDiffElPage();
     }
 
+    // TODO Nope, take a look on ServicePage::clickNatureElCheckbox from HW-4
     @When("^I select checkboxes: *'([^\"]*)', *'([^\"]*)'$")
     public void iSelectCheckboxes(String checkbox1, String checkbox2){
             new Hw6ServicePage().clickNatureElCheckbox(checkbox1,checkbox2);
@@ -41,6 +44,7 @@ public class ActionSteps {
         new Hw6ServicePage().selectDropdownColor(option);
     }
 
+    // TODO Same story as iSelectCheckboxes
     @When("^I unselect checkboxes: '([^\"]*)', '([^\"]*)'$")
     public void iUnselectCheckboxes(String checkbox1, String checkbox2){
         new Hw6ServicePage().clickNatureElCheckbox(checkbox1,checkbox2);

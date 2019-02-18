@@ -4,7 +4,7 @@ import pageObjects.hw6.Hw6UserTablePage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
-
+// TODO It is not make sense to create new PO in each step, take a look on cucumber hooks
 public class AssertionSteps {
 
     @Then("^'([^\"]*)' page is opened$")
