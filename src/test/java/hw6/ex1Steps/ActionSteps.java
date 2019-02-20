@@ -9,8 +9,6 @@ import java.util.List;
 
 import static hw6.ex1Steps.NavigationSteps.indexPage;
 
-// TODO Code convention !
-// TODO It is not make sense to create new PO in each step.
 public class ActionSteps {
     static Hw6ServicePage servicePage;
 
@@ -35,7 +33,6 @@ public class ActionSteps {
         servicePage = new Hw6ServicePage();
     }
 
-    // TODO Nope, take a look on ServicePage::clickNatureElCheckbox from HW-4
     @When("^I select checkboxes:")
     public void iSelectCheckboxes(List<NatureElementsCheckboxes> checkboxes) {
         servicePage.clickNatureElCheckbox(checkboxes);
@@ -51,7 +48,6 @@ public class ActionSteps {
         servicePage.selectDropdownColor(option);
     }
 
-    // TODO Same story as iSelectCheckboxes
     @When("^I unselect checkboxes:")
     public void iUnselectCheckboxes(List<NatureElementsCheckboxes> checkboxes) {
         servicePage.clickNatureElCheckbox(checkboxes);

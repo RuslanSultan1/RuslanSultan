@@ -8,7 +8,6 @@ import java.util.List;
 
 import static hw6.ex2Steps.ActionSteps.userTablePage;
 
-// TODO It is not make sense to create new PO in each step, take a look on cucumber hooks
 public class AssertionSteps {
 
     @Then("^'([^\"]*)' page is opened$")

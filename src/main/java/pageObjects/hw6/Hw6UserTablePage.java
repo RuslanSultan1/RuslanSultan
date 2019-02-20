@@ -83,7 +83,7 @@ public class Hw6UserTablePage {
 
     public void checkUserTable(List<String> values) {
         for (int i = 0; i < 3; i++) {
-            tableColumns.find(text(values.get(i))).should(exist);
+            tableColumns.find(text(values.get(i))).should(visible);
         }
         for (int i = 3; i < values.size(); i++) {
             if (i % 3 == 0) numbers.find(text(values.get(i))).shouldBe(visible);
