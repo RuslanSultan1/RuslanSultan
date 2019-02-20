@@ -14,7 +14,6 @@ import static com.codeborne.selenide.Selenide.close;
         glue = {"classpath:hw6.ex1Steps", "classpath:hw6.ex2Steps"}
 )
 public class RunBothFeatures extends AbstractTestNGCucumberTests {
-
     @BeforeSuite()
     public void driverSetUp() {
         Configuration.browser = Browsers.CHROME;

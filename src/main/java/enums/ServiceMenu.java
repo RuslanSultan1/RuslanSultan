@@ -8,7 +8,7 @@ public enum ServiceMenu {
     TABLES_WITH_PAGES("Table With Pages"),
     DIFFERENT_ELEMENTS("Different Elements"),
     PERFORMANCE("Performance"),
-    USER_TABLE("User table");
+    USER_TABLE("User Table");
     String value;
 
     ServiceMenu(String value) {

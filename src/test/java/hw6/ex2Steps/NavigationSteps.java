@@ -10,10 +10,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.LoginInfo.INDEX_PAGE_URL;
 
 public class NavigationSteps {
+    static Hw6IndexPage indexPage;
+
     @Given("^I am on 'Home Page'$")
     public void iAmOnHomePage() {
         open(INDEX_PAGE_URL.toString());
         getWebDriver().manage().window().maximize();
+        indexPage = new Hw6IndexPage();
     }
 
     @And("^I login as user '([^\"]*)'$")

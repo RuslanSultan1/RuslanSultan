@@ -2,9 +2,11 @@ package pageObjects.hw6;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import enums.TypeDropdown;
+import enums.ServiceMenu;
 import enums.UserTable;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
@@ -30,6 +32,9 @@ public class Hw6UserTablePage {
     @FindBy(css = ".user-descr")
     private ElementsCollection descriptions;
 
+    @FindBy(css = "th")
+    private ElementsCollection tableColumns;
+
     @FindBy(css = "[type='checkbox']")
     private ElementsCollection checkboxes;
 
@@ -39,11 +44,11 @@ public class Hw6UserTablePage {
     @FindBy(css = ".logs li")
     private ElementsCollection logs;
 
-    @FindBy(css="tr:nth-of-type(2) option")
-    private  ElementsCollection dropdownOptions;
+    @FindBy(css = "tr:nth-of-type(2) option")
+    private ElementsCollection dropdownOptions;
 
-    public void checkTitle(String UserTablePageTitle) {
-        assertEquals(title(), UserTablePageTitle);
+    public void checkTitle(ServiceMenu userTablePageTitle) {
+        assertEquals(title(), userTablePageTitle.toString());
     }
 
     public void checkDropdowns() {
@@ -76,11 +81,14 @@ public class Hw6UserTablePage {
         }
     }
 
-    public void checkUserTable() {
-        for (UserTable user : UserTable.values()) {
-            numbers.find(text(String.valueOf(user.getNumber()))).shouldBe(visible);
-            names.find(text(user.getName())).shouldBe(visible);
-            descriptions.find(text(user.getDescription())).shouldBe(visible);
+    public void checkUserTable(List<String> values) {
+        for (int i = 0; i < 3; i++) {
+            tableColumns.find(text(values.get(i))).should(exist);
+        }
+        for (int i = 3; i < values.size(); i++) {
+            if (i % 3 == 0) numbers.find(text(values.get(i))).shouldBe(visible);
+            if (i % 3 == 1) names.find(text(values.get(i))).shouldBe(visible);
+            if (i % 3 == 2) descriptions.find(text(values.get(i))).shouldBe(visible);
         }
     }
 
@@ -100,9 +108,9 @@ public class Hw6UserTablePage {
         }
     }
 
-    public void checkDropdownOptions() {
-        for (TypeDropdown typeDropdown : TypeDropdown.values()) {
-            dropdownOptions.find(text(typeDropdown.toString())).should(exist);
+    public void checkDropdownOptions(List<String> userTypes) {
+        for (String userType : userTypes) {
+            dropdownOptions.find(text(userType)).should(exist);
         }
     }
 }

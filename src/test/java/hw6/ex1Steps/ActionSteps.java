@@ -1,52 +1,59 @@
 package hw6.ex1Steps;
 
-import pageObjects.hw6.Hw6IndexPage;
+import cucumber.api.java.en.And;
+import enums.*;
 import pageObjects.hw6.Hw6ServicePage;
 import cucumber.api.java.en.When;
+
+import java.util.List;
+
+import static hw6.ex1Steps.NavigationSteps.indexPage;
 
 // TODO Code convention !
 // TODO It is not make sense to create new PO in each step.
 public class ActionSteps {
+    static Hw6ServicePage servicePage;
 
-    @When("^I login to 'Home Page' as user '([^\"]*)' with password '([^\"]*)'$")
-    public void iLoginAsUserWithPassword(String username, String password) {
-        new Hw6IndexPage().login(username, password);
+    @And("^I login as User '([^\"]*)'$")
+    public void iLoginAsUser(User user) {
+        indexPage.login(user);
     }
 
-    @When("^I click on 'Service' subcategory in the header$")
-    public void iClickOnServiceSubcategoryInTheHeader() {
-        new Hw6IndexPage().cliclHeaderServiceButton();
+    @When("^I click on '([^\"]*)' subcategory in the header$")
+    public void iClickOnSubcategoryInTheHeader(HeaderSection page) {
+        indexPage.clickHeaderButton(page);
     }
 
-    @When("^I click on 'Service' subcategory in the left section$")
-    public void iClickOnServiceSubcategoryInTheLeftSection() {
-        new Hw6IndexPage().clickLeftServiceButton();
+    @When("^I click on '([^\"]*)' subcategory in the left section$")
+    public void iClickOnSubcategoryInTheLeftSection(HeaderSection page) {
+        indexPage.clickLeftButton(page);
     }
 
-    @When("^I open through the header menu Service -> Different Elements Page$")
-    public void iOpenThroughTheHeaderMenuServiceDifferentElementsPage() {
-        new Hw6IndexPage().openDiffElPage();
+    @When("^I open through the header menu Service -> '([^\"]*)'$")
+    public void iOpenThroughTheHeaderMenuServiceDifferentElementsPage(ServiceMenu page) {
+        indexPage.openPage(page);
+        servicePage = new Hw6ServicePage();
     }
 
     // TODO Nope, take a look on ServicePage::clickNatureElCheckbox from HW-4
-    @When("^I select checkboxes: *'([^\"]*)', *'([^\"]*)'$")
-    public void iSelectCheckboxes(String checkbox1, String checkbox2){
-            new Hw6ServicePage().clickNatureElCheckbox(checkbox1,checkbox2);
-        }
+    @When("^I select checkboxes:")
+    public void iSelectCheckboxes(List<NatureElementsCheckboxes> checkboxes) {
+        servicePage.clickNatureElCheckbox(checkboxes);
+    }
 
     @When("^I select radio '([^\"]*)'$")
-    public void iSelectRadio(String radio){
-        new Hw6ServicePage().selectColorRadio(radio);
+    public void iSelectRadio(ColorRadios radio) {
+        servicePage.selectColorRadio(radio);
     }
 
     @When("^I select in dropdown '([^\"]*)'$")
-    public void iSelectInDropdown(String option){
-        new Hw6ServicePage().selectDropdownColor(option);
+    public void iSelectInDropdown(DropdownColorOptions option) {
+        servicePage.selectDropdownColor(option);
     }
 
     // TODO Same story as iSelectCheckboxes
-    @When("^I unselect checkboxes: '([^\"]*)', '([^\"]*)'$")
-    public void iUnselectCheckboxes(String checkbox1, String checkbox2){
-        new Hw6ServicePage().clickNatureElCheckbox(checkbox1,checkbox2);
+    @When("^I unselect checkboxes:")
+    public void iUnselectCheckboxes(List<NatureElementsCheckboxes> checkboxes) {
+        servicePage.clickNatureElCheckbox(checkboxes);
     }
 }

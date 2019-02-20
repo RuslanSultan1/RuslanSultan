@@ -2,7 +2,12 @@ package pageObjects.hw6;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import enums.ColorRadios;
+import enums.DropdownColorOptions;
+import enums.NatureElementsCheckboxes;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
@@ -60,27 +65,27 @@ public class Hw6ServicePage {
         leftSection.shouldBe(visible);
     }
 
-    public void clickNatureElCheckbox(String... values) {
-        for (String value : values) {
-            checkboxes.find(text(value)).click();
+    public void clickNatureElCheckbox(List<NatureElementsCheckboxes> values) {
+        for (NatureElementsCheckboxes value : values) {
+            checkboxes.find(text(value.toString())).click();
         }
     }
 
-    public void checkNatureElCheckboxStatus(String checkbox, String status) {
-        logs.find(text(checkbox)).should(visible,text(status));
+    public void checkNatureElCheckboxStatus(NatureElementsCheckboxes checkbox, String status) {
+        logs.find(text(checkbox.toString())).should(visible, text(status));
     }
 
-    public void selectColorRadio(String radio) {
-        radios.find(text(radio)).click();
+    public void selectColorRadio(ColorRadios radio) {
+        radios.find(text(radio.toString())).click();
     }
 
-    public void checkColorRadioStatus(String radio) {
-        logs.find(text(radio)).shouldBe(visible);
+    public void checkColorRadioStatus(ColorRadios radio) {
+        logs.find(text(radio.toString())).shouldBe(visible);
     }
 
-    public void selectDropdownColor(String dropdownOption) {
+    public void selectDropdownColor(DropdownColorOptions dropdownOption) {
         dropdown.click();
-        dropdownOptions.find(text(dropdownOption)).click();
+        dropdownOptions.find(text(dropdownOption.toString())).click();
     }
 
     public void checkDropdownColorStatus(String dropdownOption) {

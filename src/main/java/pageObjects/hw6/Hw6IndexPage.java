@@ -2,10 +2,10 @@ package pageObjects.hw6;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import enums.IconsTexts;
-import enums.ServiceMenu;
-import enums.User;
+import enums.*;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
@@ -13,10 +13,9 @@ import static com.codeborne.selenide.Condition.visible;
 
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.title;
+import static enums.HeaderSection.SERVICE;
 import static enums.MainHeaders.MAIN_TITLE;
 import static enums.MainHeaders.MAIN_TXT;
-import static enums.ServiceMenu.DIFFERENT_ELEMENTS;
-import static enums.ServiceMenu.USER_TABLE;
 import static org.testng.Assert.assertEquals;
 
 public class Hw6IndexPage {
@@ -35,6 +34,7 @@ public class Hw6IndexPage {
 
     @FindBy(id = "user-name")
     private SelenideElement userIcon;
+
     @FindBy(css = ".icon-practise")
     private SelenideElement iconPractise;
 
@@ -56,14 +56,14 @@ public class Hw6IndexPage {
     @FindBy(css = ".main-txt")
     private SelenideElement mainTxt;
 
-    @FindBy(css = ".nav .dropdown-toggle")
-    private SelenideElement HeaderServiceButton;
+    @FindBy(css = ".nav>li")
+    private ElementsCollection HeaderMenu;
 
     @FindBy(css = ".dropdown-menu li")
     private ElementsCollection HeaderServiceMenu;
 
-    @FindBy(css = ".menu-title[index='3']")
-    private SelenideElement LeftServiceButton;
+    @FindBy(css = ".sidebar-menu>li")
+    private ElementsCollection LeftMenu;
 
     @FindBy(css = ".menu-title[index='3'] li")
     private ElementsCollection LeftServiceMenu;
@@ -72,24 +72,19 @@ public class Hw6IndexPage {
         page(this);
     }
 
-    public void login(String name, String password) {
-        loginIcon.click();
-        userField.sendKeys(name);
-        passwordField.sendKeys(password);
-        submitButton.click();
-    }
     public void login(User user) {
         loginIcon.click();
         userField.sendKeys(user.login);
         passwordField.sendKeys(user.password);
         submitButton.click();
     }
-    public void checkTitle(String indexPageTitle) {
-        assertEquals(title(), indexPageTitle);
+
+    public void checkTitle(LoginInfo indexPageTitle) {
+        assertEquals(title(), indexPageTitle.toString());
     }
 
-    public void checkUser(String userName) {
-        userIcon.shouldHave(text(userName));
+    public void checkUserName(User user) {
+        userIcon.shouldHave(text(user.username));
     }
 
     public void checkIndexPageInterface() {
@@ -104,30 +99,32 @@ public class Hw6IndexPage {
         mainTxt.should(visible, text(MAIN_TXT.toString()));
     }
 
-    public void cliclHeaderServiceButton() {
-        HeaderServiceButton.click();
+    public void clickHeaderButton(HeaderSection subcategory) {
+        HeaderMenu.find(text(subcategory.toString())).click();
     }
 
-    public void checkHeaderServiceMenu() {
-        for (ServiceMenu value : ServiceMenu.values()) {
+    public void checkHeaderServiceMenu(List<ServiceMenu> values) {
+        for (ServiceMenu value : values) {
             HeaderServiceMenu.find(text(value.toString())).should(exist);
         }
     }
 
-    public void clickLeftServiceButton() {
-        LeftServiceButton.click();
+    public void clickLeftButton(HeaderSection subcategory) {
+        LeftMenu.find(text(subcategory.toString())).click();
     }
 
-    public void checkLeftServiceMenu() {
-        for (ServiceMenu value : ServiceMenu.values()) {
+    public void checkLeftServiceMenu(List<ServiceMenu> values) {
+        for (ServiceMenu value : values) {
             LeftServiceMenu.find(text(value.toString())).should(exist);
         }
     }
-    public void openDiffElPage() {
-        HeaderServiceButton.click();
-        HeaderServiceMenu.find(text(DIFFERENT_ELEMENTS.toString())).click();
+
+    public void openPage(ServiceMenu page) {
+        HeaderMenu.find(text(SERVICE.toString())).click();
+        HeaderServiceMenu.find(text(page.toString())).click();
     }
-    public void openUserTablePage() {
-        HeaderServiceMenu.find(text(USER_TABLE.toString())).click();
+
+    public void openPage1(ServiceMenu page) {
+        HeaderServiceMenu.find(text(page.toString())).click();
     }
 }

@@ -1,29 +1,34 @@
 package hw6.ex2Steps;
 
-import pageObjects.hw6.Hw6IndexPage;
+import enums.HeaderSection;
+import enums.ServiceMenu;
 import pageObjects.hw6.Hw6UserTablePage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 
-public class ActionSteps {
+import static hw6.ex2Steps.NavigationSteps.indexPage;
 
-    @When("^I click on 'Service' button in Header$")
-    public void iClickOnServiceButtonInHeader() {
-        new Hw6IndexPage().cliclHeaderServiceButton();
+public class ActionSteps {
+    static Hw6UserTablePage userTablePage;
+
+    @When("^I click on '([^\"]*)' button in Header$")
+    public void iClickOnButtonInHeader(HeaderSection page) {
+        indexPage.clickHeaderButton(page);
     }
 
-    @And("^I click on 'User Table' button in Service dropdown$")
-    public void iOpenOnUserTablePage() {
-        new Hw6IndexPage().openUserTablePage();
+    @And("^I click on '([^\"]*)' button in Service dropdown$")
+    public void iOpenPage(ServiceMenu page) {
+        indexPage.openPage1(page);
+        userTablePage=new Hw6UserTablePage();
     }
 
     @When("^I select 'vip' checkbox for '([^\"]*)'$")
     public void iSelectVipCheckbox(String name) {
-        new Hw6UserTablePage().clickVIPCheckboxByName(name);
+        userTablePage.clickVIPCheckboxByName(name);
     }
 
     @When("^I click on dropdown in column Type for user '([^\"]*)'$")
     public void iClickOnDropdown(String name) {
-        new Hw6UserTablePage().clickDropdownByName(name);
+        userTablePage.clickDropdownByName(name);
     }
 }
