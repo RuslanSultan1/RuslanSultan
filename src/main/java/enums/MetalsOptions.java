@@ -1,14 +1,14 @@
 package enums;
 
-public enum ColorRadios {
+public enum MetalsOptions {
+    METALS("Metals"),
     GOLD("Gold"),
     SILVER("Silver"),
     BRONZE("Bronze"),
     SELEN("Selen");
     String value;
-    int position;
 
-    ColorRadios(String value) {
+    MetalsOptions(String value) {
         this.value = value;
     }
 

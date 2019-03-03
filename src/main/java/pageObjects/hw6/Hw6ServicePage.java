@@ -2,7 +2,7 @@ package pageObjects.hw6;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import enums.ColorRadios;
+import enums.MetalsOptions;
 import enums.DropdownColorOptions;
 import enums.NatureElementsCheckboxes;
 import org.openqa.selenium.support.FindBy;
@@ -75,11 +75,11 @@ public class Hw6ServicePage {
         logs.find(text(checkbox.toString())).should(visible, text(status));
     }
 
-    public void selectColorRadio(ColorRadios radio) {
+    public void selectColorRadio(MetalsOptions radio) {
         radios.find(text(radio.toString())).click();
     }
 
-    public void checkColorRadioStatus(ColorRadios radio) {
+    public void checkColorRadioStatus(MetalsOptions radio) {
         logs.find(text(radio.toString())).shouldBe(visible);
     }
 

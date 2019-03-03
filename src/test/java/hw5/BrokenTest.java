@@ -14,7 +14,7 @@ import pageObjects.hw4.ServicePage;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static enums.ColorRadios.SELEN;
+import static enums.MetalsOptions.SELEN;
 import static enums.DropdownColorOptions.YELLOW;
 import static enums.LoginInfo.*;
 import static enums.NatureElementsCheckboxes.WATER;

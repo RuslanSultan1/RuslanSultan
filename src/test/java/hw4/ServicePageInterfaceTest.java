@@ -20,7 +20,7 @@ import static enums.NatureElementsCheckboxes.WATER;
 import static enums.NatureElementsCheckboxes.WIND;
 import static enums.DropdownColorOptions.YELLOW;
 import static enums.LoginInfo.*;
-import static enums.ColorRadios.SELEN;
+import static enums.MetalsOptions.SELEN;
 
 @Feature("Smoke tests")
 @Story("Testing Service page interface.")

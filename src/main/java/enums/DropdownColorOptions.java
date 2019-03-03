@@ -1,6 +1,7 @@
 package enums;
 
 public enum DropdownColorOptions {
+    COLORS("Colors"),
     RED("Red"),
     GREEN("Green"),
     BLUE("Blue"),

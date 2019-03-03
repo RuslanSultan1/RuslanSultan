@@ -73,12 +73,12 @@ public class ServicePage {
     }
 
     @Step("Selecting {radio} radio.")
-    public void selectColorRadio(ColorRadios radio) {
+    public void selectColorRadio(MetalsOptions radio) {
         radios.find(text(radio.toString())).click();
     }
 
     @Step("Checking status of radio {radio}.")
-    public void checkColorRadioStatus(ColorRadios radio) {
+    public void checkColorRadioStatus(MetalsOptions radio) {
         logs.find(text(radio.toString())).shouldBe(visible);
     }
 

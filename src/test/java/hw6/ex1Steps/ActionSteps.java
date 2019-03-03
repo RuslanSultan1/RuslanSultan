@@ -39,7 +39,7 @@ public class ActionSteps {
     }
 
     @When("^I select radio '([^\"]*)'$")
-    public void iSelectRadio(ColorRadios radio) {
+    public void iSelectRadio(MetalsOptions radio) {
         servicePage.selectColorRadio(radio);
     }
 

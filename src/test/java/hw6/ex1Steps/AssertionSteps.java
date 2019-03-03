@@ -58,7 +58,7 @@ public class AssertionSteps {
     }
 
     @Then("^Radiobutton has value '([^\"]*)' in the log row corresponded to the status$")
-    public void radiobuttonHasValueInTheLogRowCorrespondedToTheStatus(ColorRadios radio) {
+    public void radiobuttonHasValueInTheLogRowCorrespondedToTheStatus(MetalsOptions radio) {
         servicePage.checkColorRadioStatus(radio);
     }
 
