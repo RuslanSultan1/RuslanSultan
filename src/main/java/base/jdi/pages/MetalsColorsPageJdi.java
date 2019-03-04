@@ -15,8 +15,6 @@ public class MetalsColorsPageJdi extends WebPage {
     MetalsColorsForm metalsColorsForm;
 
     public void submitForm(MetalColorsFormState state) {
-        metalsColorsForm.selectNatElCheckboxes(state);
-        metalsColorsForm.selectVegetables(state);
         metalsColorsForm.submit(state, "submit");
     }
 

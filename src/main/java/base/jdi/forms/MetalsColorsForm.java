@@ -27,14 +27,21 @@ public class MetalsColorsForm extends Form<MetalColorsFormState> {
     @FindBy(css = "#elements-checklist label")
     private static WebList checkboxes;
 
-    public void selectVegetables(MetalColorsFormState state) {
+    private void selectVegetables(MetalColorsFormState state) {
         vegetables.select(vegetables.getSelected());
         for (VegetablesDropdown vegetable : state.vegetablesList) {
             vegetables.select(vegetable);
         }
     }
 
-    public void selectNatElCheckboxes(MetalColorsFormState state) {
+    private void selectNatElCheckboxes(MetalColorsFormState state) {
         checkboxes.select((NatureElementsCheckboxes[]) state.checkboxList.toArray());
+    }
+
+    @Override
+    public void submit(MetalColorsFormState state, String buttonName) {
+        selectVegetables(state);
+        selectNatElCheckboxes(state);
+        super.submit(state, buttonName);
     }
 }
