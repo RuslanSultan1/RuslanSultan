@@ -24,6 +24,8 @@ public class MetalColorsPageTestWithDataProvider {
                 ("src/test/resources/hw8/JDI_ex8_metalsColorsDataSet.json"));
         List<MetalColorsFormStateDP> statesList = new ArrayList<>();
         int i = 1;
+        // TODO Your script should not depends on test data names
+        // TODO Take a look on TypeToken from Gson library
         while (jsonElement.getAsJsonObject().get("data_" + i) != null) {
             JsonElement dataSet = jsonElement.getAsJsonObject().get("data_" + (i++));
             statesList.add(new Gson().fromJson(dataSet, MetalColorsFormStateDP.class));
