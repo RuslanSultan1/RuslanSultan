@@ -49,9 +49,9 @@ public class HomePageTestWithSoftAsserts {
         softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-header [data-toggle='dropdown']")).isDisplayed());
         softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-header [data-toggle='dropdown']")).getText(),
                 "SERVICE");
-        softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-header [href='metals-colors.html']"))
+        softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-header [href='metals-color.html']"))
                 .isDisplayed());
-        softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-header [href='metals-colors.html']")).getText(),
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-header [href='metals-color.html']")).getText(),
                 "METALS & COLORS");
 
         //7 Assert that there are 4 images on the Index Page and they are displayed

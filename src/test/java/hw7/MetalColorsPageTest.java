@@ -7,6 +7,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 import static base.jdi.entities.MetalColorsFormState.STATE1;
 import static base.jdi.entities.User.*;
 import static enums.HeaderMenu.METALS_COLORS;

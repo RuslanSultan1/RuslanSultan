@@ -47,8 +47,8 @@ public class HomePageTest {
         assertTrue(driver.findElement(By.cssSelector(".uui-header [data-toggle='dropdown']")).isDisplayed());
         assertEquals(driver.findElement(By.cssSelector(".uui-header [data-toggle='dropdown']")).getText(),
                 "SERVICE");
-        assertTrue(driver.findElement(By.cssSelector(".uui-header [href='metals-colors.html']")).isDisplayed());
-        assertEquals(driver.findElement(By.cssSelector(".uui-header [href='metals-colors.html']")).getText(),
+        assertTrue(driver.findElement(By.cssSelector(".uui-header [href='metals-color.html']")).isDisplayed());
+        assertEquals(driver.findElement(By.cssSelector(".uui-header [href='metals-color.html']")).getText(),
                 "METALS & COLORS");
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
